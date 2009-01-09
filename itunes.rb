@@ -34,6 +34,18 @@ class ITunes
     current_tracks_ref[track_index.to_i].delete
   end
   
+  def add_album(name)
+    find_tracks_by_album(name).each do |track|
+      add_track(track.library_index)
+    end
+  end
+  
+  def clear_playlist
+    current_tracks.size.times do |i|
+      app.current_playlist.tracks[1].delete
+    end
+  end
+  
   def current_playlist
     begin
       app.current_playlist.get

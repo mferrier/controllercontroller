@@ -76,6 +76,10 @@ get '/*' do
     itunes.remove_track(params[:index].to_i)
   when 'add'
     itunes.add_track(params[:index].to_i)
+  when 'skip'
+    itunes.server_playlist.tracks[params[:index].to_i].play
+  when 'add_album'
+    itunes.add_album(URI.unescape(params[:album]))
   end
   
   if params[:do]
