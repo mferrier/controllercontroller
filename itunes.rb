@@ -11,7 +11,7 @@ class ITunes
   MAX_VOLUME = 100
   
   def initialize
-    create_playlist unless playlist_exists?
+    init_playlist
     playpause
   end
   
@@ -28,7 +28,7 @@ class ITunes
   end
   
   def remove_track(track_index)
-    server_playlist[track_index.to_i].delete
+    current_tracks_ref[track_index.to_i].delete
   end
   
   def current_playlist
@@ -38,6 +38,18 @@ class ITunes
       playpause
       retry
     end    
+  end
+  
+  def current_tracks_ref
+    current_playlist.tracks
+  end
+  
+  def current_tracks
+    current_tracks_ref.get.map{|t| Track.new(t)}
+  end
+  
+  def current_tracks_with_indexes
+    current_tracks.zip(current_tracks_ref.index.get)
   end
   
   def playlist_names
@@ -108,14 +120,27 @@ class ITunes
   def playpause
     app.play(server_playlist)
     app.pause
-  end 
+  end
+  
+  def add_default_track
+    add_track(1)
+  end
   
   def create_playlist
     app.user_playlists.make(:new => :playlist, :with_properties => {:name => SERVER_PLAYLIST_NAME})
   end
   
-  def playlist_exists?
+  def server_playlist_exists?
     playlist_names.include?(SERVER_PLAYLIST_NAME)
+  end
+  
+  def init_playlist
+    create_playlist unless server_playlist_exists?
+    add_default_track if playlist_empty? 
+  end
+  
+  def playlist_empty?
+    !server_playlist.tracks.get.any?
   end
   
   def itunes_connection

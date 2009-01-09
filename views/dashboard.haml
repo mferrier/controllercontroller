@@ -1,15 +1,18 @@
 #current
-  .title
-    Title:
-    = current_track.title
-  .artist
-    Artist:
-    = current_track.artist
-  .album
-    Album:
-    = current_track.album
-  .duration
-    == #{itunes.time_left_in_current_track}/#{current_track.time}
+  - if !itunes.playlist_empty?
+    .title
+      Title:
+      = current_track.title
+    .artist
+      Artist:
+      = current_track.artist
+    .album
+      Album:
+      = current_track.album
+    .duration
+      == #{itunes.time_left_in_current_track}/#{current_track.time}
+  - else
+    Playlist is empty.
 
 .volume
   - if itunes.muted?
@@ -24,4 +27,14 @@
   - if itunes.player_state == :playing
     = link_to 'pause', :do => :pause
   - else
-    = link_to 'play', :do => :play  
+    = link_to 'play', :do => :play
+
+.playlist
+  %ol
+    - unless itunes.playlist_empty?
+      - current_tracks_with_indexes.each do |track, index|
+        %li
+          = track.artist
+          \-
+          = track.title
+          = link_to 'remove', :do => :remove, :index => index

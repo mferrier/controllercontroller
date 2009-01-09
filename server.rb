@@ -19,6 +19,18 @@ helpers do
     itunes.current_track
   end
   
+  def current_playlist
+    itunes.current_playlist
+  end
+  
+  def current_tracks
+    itunes.current_tracks
+  end
+  
+  def current_tracks_with_indexes
+    itunes.current_tracks_with_indexes
+  end
+  
   def link_to(label, url)
     if url.is_a?(Hash)
       url = '?' + url.to_param
@@ -34,7 +46,7 @@ get '/stylesheet.css' do
 end
 
 get '/*' do
-  if itunes.player_state == :stopped
+  if itunes.player_state == :stopped && !itunes.playlist_empty?
     itunes.playpause
   end
   
@@ -51,6 +63,8 @@ get '/*' do
     itunes.mute
   when 'unmute'
     itunes.unmute  
+  when 'remove'
+    itunes.remove_track(params[:index].to_i)
   end
   
   if params[:do]
