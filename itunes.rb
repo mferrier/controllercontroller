@@ -1,21 +1,43 @@
 require 'rubygems'
+require 'ruby-debug'
 require 'activesupport'
 require 'appscript'
 require 'track'
+require 'core_extensions'
 
 class ITunes
   SERVER_PLAYLIST_NAME = 'controllercontroller'
+  MIN_VOLUME = 0
+  MAX_VOLUME = 100
   
   def initialize
     create_playlist unless playlist_exists?
+    playpause
   end
   
   def app
     @app ||= itunes_connection
   end
   
-  def playlist
+  def server_playlist
     playlists[SERVER_PLAYLIST_NAME]
+  end
+  
+  def add_track(track_index)
+    app.tracks[track_index.to_i].duplicate(:to => server_playlist)
+  end
+  
+  def remove_track(track_index)
+    server_playlist[track_index.to_i].delete
+  end
+  
+  def current_playlist
+    begin
+      app.current_playlist.get
+    rescue Appscript::CommandError
+      playpause
+      retry
+    end    
   end
   
   def playlist_names
@@ -30,20 +52,61 @@ class ITunes
   
   def current_track
     begin
-      app.current_track.get
+      Track.new(app.current_track.get)
     rescue Appscript::CommandError
       playpause
       retry
     end
   end
   
-  def itunes_connection
-    Appscript.app('iTunes')
+  def time_left_in_current_track
+    seconds = (current_track.duration - app.player_position.get)
+    "%i:%02i" % [seconds / 60, seconds % 60]
+  end
+  
+  def player_state
+    app.player_state.get
+  end
+  
+  def increase_volume(incr)
+    new_volume = @volume_before_mute || (current_volume + incr).at_most(MAX_VOLUME)
+    app.sound_volume.set(new_volume)
+  end
+  
+  def decrease_volume(incr)
+    new_volume = (current_volume - incr).at_least(MIN_VOLUME)   
+    app.sound_volume.set(new_volume)
+  end
+  
+  def mute
+    @volume_before_mute = current_volume
+    app.sound_volume.set(0)
+  end
+  
+  def muted?
+    current_volume == MIN_VOLUME
+  end  
+  
+  def unmute
+    app.sound_volume.set(@volume_before_mute.to_i)
+    @volume_before_mute = nil
+  end
+  
+  def current_volume
+    app.sound_volume.get
+  end
+  
+  def play
+    app.play
+  end
+  
+  def pause
+    app.pause
   end
   
   # ensure there's a current_track and current_playlist
   def playpause
-    app.play
+    app.play(server_playlist)
     app.pause
   end 
   
@@ -54,6 +117,10 @@ class ITunes
   def playlist_exists?
     playlist_names.include?(SERVER_PLAYLIST_NAME)
   end
+  
+  def itunes_connection
+    Appscript.app('iTunes')
+  end  
 end
 
-@it = ITunes.new
+#@it = ITunes.new
