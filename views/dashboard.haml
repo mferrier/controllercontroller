@@ -38,3 +38,24 @@
           \-
           = track.title
           = link_to 'remove', :do => :remove, :index => index
+          
+.library
+  %ul
+    - if params[:artist]
+      = link_to 'back'
+      %fieldset
+        %legend= URI.unescape(params[:artist])
+        - itunes.find_albums_by_artist(params[:artist]).each do |album, tracks|
+          %li
+            = album
+            %ol
+              - tracks.each do |track|
+                %li
+                  = track.description
+                  = link_to 'add', :do => :add, :index => track.library_index
+
+        
+    - else
+      - library_artists.each do |artist|
+        %li
+          = link_to artist, :artist => artist

@@ -26,4 +26,12 @@ class Track
   def duration
     ref.duration.get
   end
+  
+  def description
+    "#{artist} - #{title}"
+  end
+  
+  def library_index
+    ref.index.get
+  end
 end

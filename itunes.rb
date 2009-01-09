@@ -4,8 +4,11 @@ require 'activesupport'
 require 'appscript'
 require 'track'
 require 'core_extensions'
+require 'library'
 
 class ITunes
+  include Library
+  
   SERVER_PLAYLIST_NAME = 'controllercontroller'
   MIN_VOLUME = 0
   MAX_VOLUME = 100
@@ -147,5 +150,3 @@ class ITunes
     Appscript.app('iTunes')
   end  
 end
-
-#@it = ITunes.new

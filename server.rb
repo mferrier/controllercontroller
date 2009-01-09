@@ -31,8 +31,17 @@ helpers do
     itunes.current_tracks_with_indexes
   end
   
-  def link_to(label, url)
+  def library_artists
+    itunes.artists
+  end
+  
+  def library_albums
+    itunes.albums
+  end
+  
+  def link_to(label, url = '/')
     if url.is_a?(Hash)
+      url[:return] = request.url
       url = '?' + url.to_param
     end
     
@@ -65,10 +74,12 @@ get '/*' do
     itunes.unmute  
   when 'remove'
     itunes.remove_track(params[:index].to_i)
+  when 'add'
+    itunes.add_track(params[:index].to_i)
   end
   
   if params[:do]
-    redirect '/'
+    redirect URI.unescape(params[:return] || '/')
   else
     haml :dashboard
   end
