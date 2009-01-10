@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'ruby-debug'
 require 'activesupport'
 require 'appscript'
 require 'track'

@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'activesupport'
 require 'sinatra'
-require 'json'
 require 'itunes'
 require 'uri'
 
