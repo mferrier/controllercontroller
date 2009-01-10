@@ -1,5 +1,7 @@
 require 'track'
 require 'uri'
+require 'rubygems'
+require 'activesupport'
 
 module Library
   
@@ -8,7 +10,11 @@ module Library
   end
   
   def artists
-    app.tracks.artist.get.uniq
+    app.tracks.artist.get.uniq!.reject{|a| a.blank?}.sort
+  end
+  
+  def artist_letters
+    artists.map{|a| a[0,1].upcase}.uniq!
   end
   
   def albums

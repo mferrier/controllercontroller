@@ -1,0 +1,7 @@
+controllercontroller
+=======================
+
+Sinatra server for unlimited users to control iTunes remotely. Add/remove tracks from
+the playlist, browse the library, control play/pause/volume/etc.
+
+(C) 2008 Mike Ferrier

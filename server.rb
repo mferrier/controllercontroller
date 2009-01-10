@@ -15,30 +15,6 @@ helpers do
     ITUNES
   end
   
-  def current_track
-    itunes.current_track
-  end
-  
-  def current_playlist
-    itunes.current_playlist
-  end
-  
-  def current_tracks
-    itunes.current_tracks
-  end
-  
-  def current_tracks_with_indexes
-    itunes.current_tracks_with_indexes
-  end
-  
-  def library_artists
-    itunes.artists
-  end
-  
-  def library_albums
-    itunes.albums
-  end
-  
   def link_to(label, url = '/')
     if url.is_a?(Hash)
       url[:return] = request.url
@@ -46,6 +22,15 @@ helpers do
     end
     
     "<a href=\"#{URI.escape(url)}\">#{label}</a>"
+  end
+  
+  def partial(page, options={})
+    haml "_#{page.to_s}".to_sym, options.merge!(:layout => false)
+  end
+  
+  def link_to_anchor(label, name)
+    url = "##{name}"
+    link_to label, url
   end
 end
 
@@ -80,6 +65,8 @@ get '/*' do
     itunes.server_playlist.tracks[params[:index].to_i].play
   when 'add_album'
     itunes.add_album(URI.unescape(params[:album]))
+  when 'clear'
+    itunes.clear_playlist
   end
   
   if params[:do]

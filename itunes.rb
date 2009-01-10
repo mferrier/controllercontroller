@@ -41,15 +41,14 @@ class ITunes
   end
   
   def clear_playlist
-    current_tracks.size.times do |i|
-      app.current_playlist.tracks[1].delete
-    end
+    current_tracks_ref.delete
   end
   
   def current_playlist
     begin
       app.current_playlist.get
     rescue Appscript::CommandError
+      init_playlist
       playpause
       retry
     end    
@@ -133,8 +132,10 @@ class ITunes
   
   # ensure there's a current_track and current_playlist
   def playpause
-    app.play(server_playlist)
-    app.pause
+    if app.player_state == :stopped
+      app.play(server_playlist)
+      app.pause
+    end
   end
   
   def add_default_track

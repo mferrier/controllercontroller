@@ -1,0 +1,13 @@
+%fieldset
+  %legend
+    Playlist
+    = link_to 'clear', :do => :clear
+  .playlist
+    %ol
+      - unless itunes.playlist_empty?
+        - itunes.current_tracks_with_indexes.each do |track, index|
+          %li
+            = link_to track.description, :do => :skip, :index => index
+            = link_to 'remove', :do => :remove, :index => index
+      - else
+        Playlist is empty.
