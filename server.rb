@@ -16,7 +16,6 @@ helpers do
   
   def link_to(label, url = '/')
     if url.is_a?(Hash)
-      url[:return] = request.url
       url = '?' + url.to_param
     end
     
@@ -68,8 +67,10 @@ get '/*' do
     itunes.clear_playlist
   end
   
+  #require 'ruby-debug'; debugger
+  
   if params[:do]
-    redirect URI.unescape(params[:return] || '/')
+    redirect request.referrer || '/'
   else
     haml :dashboard
   end

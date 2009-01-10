@@ -3,28 +3,24 @@ class Track
     @ref = ref
   end
   
-  def ref
-    @ref
-  end
-  
   def title
-    ref.name.get
+    @ref.name.get
   end
   
   def artist
-    ref.artist.get
+    @ref.artist.get
   end
   
   def album
-    ref.album.get
+    @ref.album.get
   end
   
   def time
-    ref.time.get
+    @ref.time.get
   end
   
   def duration
-    ref.duration.get
+    @ref.duration.get
   end
   
   def description
@@ -32,6 +28,6 @@ class Track
   end
   
   def library_index
-    ref.index.get
+    @ref.index.get
   end
 end
