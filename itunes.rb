@@ -131,7 +131,7 @@ class ITunes
   
   # ensure there's a current_track and current_playlist
   def playpause
-    if app.player_state == :stopped
+    if app.player_state.get == :stopped
       app.play(server_playlist)
       app.pause
     end

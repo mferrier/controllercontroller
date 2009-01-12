@@ -3,6 +3,7 @@ require 'activesupport'
 require 'sinatra'
 require 'itunes'
 require 'uri'
+require 'ruby-debug'
 
 configure do
   ITUNES = ITunes.new
@@ -66,8 +67,6 @@ get '/*' do
   when 'clear'
     itunes.clear_playlist
   end
-  
-  #require 'ruby-debug'; debugger
   
   if params[:do]
     redirect request.referrer || '/'
