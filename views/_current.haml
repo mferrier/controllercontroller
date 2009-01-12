@@ -1,16 +1,18 @@
 %fieldset#current
-  %legend Now Playing
-  - if !itunes.playlist_empty?
-    .title
-      Title:
-      = itunes.current_track.title
-    .artist
-      Artist:
-      = itunes.current_track.artist
-    .album
-      Album:
-      = itunes.current_track.album
-    .duration
-      == #{itunes.time_left_in_current_track}/#{itunes.current_track.time}
-  - else
-    Nothin'!
+  %h1 Now Playing
+  %ul
+    - if !itunes.playlist_empty?
+      %li.title.clearfix
+        %label Title:
+        %span= itunes.current_track.title
+      %li.artist.clearfix
+        %label Artist:
+        %span= itunes.current_track.artist
+      %li.album.clearfix
+        %label Album:
+        %span= itunes.current_track.album
+      %li.duration.clearfix
+        %label Duration:
+        %span== #{itunes.time_left_in_current_track}/#{itunes.current_track.time}
+    - else
+      %li.clearfix.nothing Nothin'!

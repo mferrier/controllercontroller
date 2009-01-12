@@ -14,7 +14,7 @@ module Library
   end
   
   def artist_letters
-    artists.map{|a| a[0,1].upcase}.uniq!
+    artists.map{|a| a[0,1].upcase}.uniq
   end
   
   def albums

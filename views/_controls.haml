@@ -1,16 +1,23 @@
-%fieldset
-  %legend Controls
-  .volume
-    - if itunes.muted?
-      = link_to 'unmute', :do => :unmute
-    - else
-      = link_to 'mute', :do => :mute
-    = link_to '-', :do => :volume_down
-    = itunes.current_volume
-    = link_to '+', :do => :volume_up
+%fieldset#controls
+  %h1 Controls
+  %ul
+    
+    %li.volume.clearfix
+      %label Volume:
+      %span  
+        = link_to '(&ndash;)', :do => :volume_down
+        = itunes.current_volume
+        = link_to '(+)', :do => :volume_up
+    %li.mute.clearfix
+      %label Mute:
+      - if itunes.muted?
+        %span= link_to 'ON', :do => :unmute
+      - else
+        %span= link_to 'OFF', :do => :mute    
 
-  .control
-    - if itunes.player_state == :playing
-      = link_to 'pause', :do => :pause
-    - else
-      = link_to 'play', :do => :play
+    %li.play.clearfix
+      %label &nbsp;
+      - if itunes.player_state == :playing
+        %span= link_to 'pause', :do => :pause
+      - else
+        %span= link_to 'play', :do => :play

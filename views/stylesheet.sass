@@ -1,2 +1,332 @@
+html, body, h1, h2, h3, h4, h5, h6, fieldset, ul, ol, li, input, textarea, select, table, dl, dd, dt, img, blockquote, hr, p, table
+  :margin 0
+  :padding 0
+  :outline 0
+  :font-weight normal
+  :font-size 100%
+  :vertical-align baseline
+  :background transparent
+fieldset, a img, img
+  :border 0 
+
+// Soft Reset 
+html
+  :font-size 62.5%
 body
-  font-family: arial
+  :color #121212
+  :line-height 1.15
+  :font-size 1.35em
+  :background white
+input, textarea, select, option
+  :font-size 1em
+  :background white
+p, li, dd
+  :line-height 1.5
+abbr, acronym, a
+  :padding-bottom 1px
+a, ins
+  :text-decoration none
+blockquote, dd
+  :margin 0 30px
+p, address, dl, ol, ul, fieldset, table
+  :margin-bottom 13px 
+abbr, acronym
+  :border-bottom 1px dotted
+  :cursor help
+ins, fieldset *:focus
+  :background #f2fafe  
+hr
+  :margin 12px 0
+  :clear both
+  :border 0 solid #ccc
+  :border-top-width 1px
+  :height 0
+      
+// TYPOGRAPHY   
+body, input, textarea, select, button 
+  :font-family monaco, 'lucida console', monospace
+
+a
+  :outline 0
+  &:link, &:visited
+    :color red
+  &:hover, &:active
+    :color #666
+    :border-bottom 0
+address
+  :font-style normal
+  :line-height 1.35
+p
+  :letter-spacing 0.025em
+  :word-spacing 0.04em  
+code, tt, var, pre, samp
+  :font-family monospace
+  :font-size 1.15em  
+sup
+  :vertical-align top  
+sub
+  :vertical-align bottom  
+h1, h2, h3, h4, h5, h6, dt
+  :line-height 1.35 
+  :margin-bottom 18px   
+  :letter-spacing -0.002em
+  :word-spacing 0.15em
+h1
+  :font-size 2.05em
+h2 
+  :font-size 1.8em
+h3
+  :font-size 1.6em
+h4, dt
+  :font-size 1.35em
+  :letter-spacing 0.08em  
+h5
+  :font-size 1.05em
+  :letter-spacing 0.06em
+  :text-transform uppercase
+h6
+  :font-size 1.015em
+  :letter-spacing 0.14em
+  :font-variant small-caps
+small
+  :font-size 0.85em
+big
+  :font-size 1.25em        
+del
+  :text-decoration line-through
+
+// LISTS
+ol, ul
+  :margin-left 30px
+ol li li
+  :list-style-type lower-roman
+  li
+    :list-style-type lower-alpha     
+fieldset 
+  li
+    :list-style-type none
+  ol, ul
+    :margin-left 0
+
+// FORMS
+input, textarea
+  :padding 3px
+input.radio, input.checkbox, input.submit, input.reset
+  :padding 0
+input.radio, input.checkbox  
+  :width auto !important
+input.submit, input.reset, input.radio, input.checkbox, button, select
+  :cursor pointer
+input.hidden
+  :display none !important  
+  :height 0 !important  
+  :visibility hidden !important  
+textarea
+  :width 200px
+  :height 60px
+label
+  :display block   
+.ie legend  
+  :margin-left -9px
+
+// TABLES 
+table
+  :border-collapse collapse
+  :border-spacing 0
+  :width 100%
+th, td, caption
+  :text-align left 
+  :vertical-align middle 
+th, td
+  :border 1px solid
+  :padding 5px  
+caption
+  :margin-bottom 5px     
+
+// CLASSES
+.right
+  :float right
+.left
+  :float left    
+.clear, .clearfix:after 
+  :clear both
+  :display block
+  :height 0
+  :width 0
+  :overflow hidden
+  :visibility hidden
+.clearfix:after 
+  :content " "
+.ie .clearfix
+  :height 1%  
+  *
+    :margin-bottom 0
+.hide
+  :display none    
+td, th
+  &.left, &.right
+    :float none  
+  &.left
+    :text-align left
+  &.right
+    :text-align right
+  &.center
+    :text-align center 
+    
+body
+  :background white url(/images/bg.png) right top no-repeat
+  :background-attachment fixed
+    
+#container
+  :margin-left 41px
+  :background white
+  :width 600px
+  :padding 105px 20px 20px
+  :border solid #666
+  :border-width 0 1px 2px
+  :z-index 100
+  :position relative
+  
+h1.logo  
+  :background #666
+  :color white
+  :padding 10px 20px 20px
+  :position absolute
+  :width 600px
+  :top 0
+  :left 0
+  small
+    :display block
+    :font-size 0.5em
+  
+fieldset
+  h1
+    :margin-bottom 0
+    :color #333
+    :font-size 1.1em
+    :background #efefef
+    :border-bottom 2px solid #ccc
+    :padding 5px 10px
+    :-moz-border-radius-topleft 5px
+    :-moz-border-radius-topright 5px
+  li 
+    :border-bottom 1px dotted #ccc
+    &:first-child
+      label,span
+        :padding-top 7px !important
+    label, span
+      :display block
+      :float left
+      :padding-top 3px
+      :padding-bottom 3px
+    label
+      :background #f7f7f7
+      :width 85px
+      :margin-right 10px
+      :text-align right
+      :padding-right 10px
+    span
+      :width 490px
+    ul
+      :margin-bottom 0
+      :padding-left 7px
+      :background #efefef
+      li
+        :border 0
+        :float left    
+        :margin-right 7px
+        &:last-child
+          :margin-right 0 
+        a
+          :display block
+          :padding 0 7px
+          :margin 3px 0
+          :border 1px solid #ccc
+          :background #f7f7f7
+          :-moz-border-radius 3px
+    ol 
+      :margin-left 35px
+      li
+        :list-style-type decimal-leading-zero      
+        :padding 5px 0
+        &:first-child
+          :padding-top 7px
+  &#current li
+    :background white url(/images/label_bg.gif) left top repeat-y
+    &.nothing
+      :background-image none
+      :font-style italic
+      :padding 7px 5px 3px
+  &#playlist
+    ol
+      :margin-left 35px
+    li
+      :list-style-type decimal-leading-zero
+      :padding 3px 0
+      :position relative
+      &.empty
+        :list-style-type none
+        :margin-left -35px
+        :padding-left 5px
+      &:first-child
+        :padding-top 7px      
+      a
+        :display block
+        :width 495px
+        :margin-right 10px
+        :float left
+      a:last-child
+        :font-size 0.8em
+        :padding 3px 0
+        :background #efefef
+        :width 50px
+        :margin-right 10px
+        :text-align center
+        :-moz-border-radius 3px
+        
+.artist_list, .album_list
+  li:last-child
+    :border 0
+    li:last-child
+      :border-bottom 1px dotted #ccc        
+    
+.album_list
+  .artist
+    :background #efefef
+    :padding 7px 10px
+    :border-bottom 1px dotted #ccc
+    h2
+      :font-size 1.2em    
+      :width 515px
+      :margin 0
+      :float left
+    a
+      :display block
+      :float right
+      :padding 4px 5px
+      :margin-left 10px
+      :background #333
+      :font-size 0.8em
+      :-moz-border-radius 3px  
+      :background white
+  h3
+    :margin-bottom 0
+    :font-size 1em
+    :padding 7px 10px
+    :border-bottom 1px dotted #ccc      
+    :position relative
+    :font-style italic
+    :background #f2f2f2
+    a
+      :border 1px solid #ccc
+      :bottom 5px !important
+  li  
+    :position relative
+    a
+      :position absolute
+      :right 10px
+      :bottom 4px
+      :font-size 0.8em 
+      :background #efefef
+      :-moz-border-radius 3px 
+      :padding 3px 5px     

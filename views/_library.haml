@@ -1,25 +1,31 @@
-%fieldset
-  %legend Library
-  .library
-    %ul
-      - if params[:artist]
-        = link_to 'back'
-        %fieldset
-          %legend= URI.unescape(params[:artist])
-          - itunes.find_albums_by_artist(params[:artist]).each do |album, tracks|
-            %li
-              = album
-              = link_to 'add', :do => :add_album, :album => album
-              %ol
-                - tracks.each do |track|
-                  %li
-                    = track.description
-                    = link_to 'add', :do => :add, :index => track.library_index
-
-        
-      - else
-        - itunes.artist_letters.each do |l|
-          = link_to_anchor l, l
-        - itunes.artists.each do |artist|
+%fieldset#library
+  %h1 Library
+    
+  - if params[:artist]
+    %fieldset.album_list
+      .artist.clearfix
+        %h2= URI.unescape(params[:artist])
+        = link_to '&laquo; back'
+      
+      %ul
+        - itunes.find_albums_by_artist(params[:artist]).each do |album, tracks|
           %li
-            = link_to artist, :artist => artist
+            %h3
+              = album
+              = link_to '+ add', :do => :add_album, :album => album
+            %ol
+              - tracks.each do |track|
+                %li
+                  = track.description
+                  = link_to '+ add', :do => :add, :index => track.library_index
+
+    - else
+      %ul.artist_list
+        %li
+          %ul.clearfix
+            - itunes.artist_letters.each do |l|
+              %li= link_to_anchor l, l
+        %li
+          %ol
+            - itunes.artists.each do |artist|
+              %li= link_to artist, :artist => artist
