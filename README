@@ -18,3 +18,10 @@ Running
 $ ruby server.rb
 
 (C) 2008 Mike Ferrier (mferrier@gmail.com)
+
+
+
+styles
+=======================
+Style assistance by Shawn Allison.
+Obviously no support for Internet Explorer. Looks great in Firefox 3 and Safari!

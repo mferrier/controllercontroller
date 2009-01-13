@@ -10,6 +10,8 @@ fieldset, a img, img
   :border 0 
 html
   :font-size 62.5%
+  &.safari
+    :font-size 81.5%
 body
   :color #121212
   :line-height 1.15
@@ -45,9 +47,9 @@ fieldset li
 .clearfix:after 
   :content " "
 
-    
 #container
   :margin-left 40px
+  :margin-bottom 20px
   :width 640px
   :background white
   :border solid #666
@@ -168,7 +170,15 @@ fieldset
         :margin-top 2px
         :background url(/images/icons/remove.png) 0 0 no-repeat
         :text-indent -999em
-
+    .safari & 
+      ol
+        :width 600px
+        :margin 0
+      li a
+        :width 560px
+        &:last-child
+          :width 16px
+        
   &#library h1
     :background-image url(/images/icons/library.png)
   &#controls 
