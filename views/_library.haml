@@ -1,8 +1,6 @@
-%fieldset#library
-  %h1 Library
-    
+#library
   - if params[:artist]
-    %fieldset.album_list
+    .album_list
       .artist.clearfix
         %h2= URI.unescape(params[:artist])
         = link_to '&laquo; back'
@@ -19,13 +17,15 @@
                   = track.description
                   = link_to '+ add', :do => :add, :index => track.library_index
 
-    - else
-      %ul.artist_list
-        %li
-          %ul.clearfix
-            - itunes.artist_letters.each do |l|
-              %li= link_to_anchor l, l
-        %li
-          %ol
-            - itunes.artists.each do |artist|
-              %li= link_to artist, :artist => artist
+  - else
+    - itunes.artists.each do |artist|
+      = link_to artist, :artist => artist
+    / %ul.artist_list
+    /      %li
+    /        %ul.clearfix
+    /          - itunes.artist_letters.each do |l|
+    /            %li= link_to_anchor l, l
+    /      %li
+    /        %ol
+    /          - itunes.artists.each do |artist|
+    /            %li= link_to artist, :artist => artist

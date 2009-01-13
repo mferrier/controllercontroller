@@ -1,23 +1,26 @@
-%fieldset#controls
-  %h1 Controls
-  %ul
-    
-    %li.volume.clearfix
-      %label Volume:
-      %span  
-        = link_to '(&ndash;)', :do => :volume_down
-        = itunes.current_volume
-        = link_to '(+)', :do => :volume_up
-    %li.mute.clearfix
-      %label Mute:
-      - if itunes.muted?
-        %span.muted= link_to 'ON', :do => :unmute
-      - else
-        %span.unmuted= link_to 'OFF', :do => :mute    
+#controls.clearfix
+  .active
+    - if itunes.player_state == :playing
+      .pause= link_to 'pause', :do => :pause
+    - else
+      .play= link_to 'play', :do => :play
 
-    %li.play.clearfix
-      %label State:
-      - if itunes.player_state == :playing
-        %span.pause= link_to 'pause', :do => :pause
-      - else
-        %span.play= link_to 'play', :do => :play
+  .volume.clearfix
+    .down= link_to '(&ndash;)', :do => :volume_down
+    %h3= itunes.current_volume
+    .up= link_to '(+)', :do => :volume_up
+ 
+  .muting  
+    - if itunes.muted?
+      .muted= link_to 'ON', :do => :unmute
+      %h4 Mute ON
+    - else
+      .unmuted= link_to 'OFF', :do => :mute    
+      %h4 Mute OFF
+  .playlist_clear
+    .cleared= link_to '[clear]', :do => :clear    
+    %h4 Clear Playlist
+
+ 
+
+      

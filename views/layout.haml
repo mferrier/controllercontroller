@@ -17,8 +17,9 @@
       }();
       // Mike, can you move this into it's own .js file? I was unsure how to set that up in Sinatra. Thanks!
   %body
-    #container
-      %h1.logo 
-        iTunes Library Controller 
-        %small [controllercontroller]
-      = yield
+    #header.clearfix
+      %h1 
+        iTunes Library Controller
+        %span [controllercontroller]
+    #container= yield
+    

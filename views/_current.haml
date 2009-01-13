@@ -1,19 +1,12 @@
-%fieldset#current
-  %h1 Now Playing
-  %ul
+#current
+  %h2 Now Playing
+  #active_song
     - if !itunes.playlist_empty?
-      %li.title.clearfix
-        %label Title:
-        %span
-          %strong= itunes.current_track.title
-      %li.artist.clearfix
-        %label Artist:
-        %span= itunes.current_track.artist
-      %li.album.clearfix
-        %label Album:
-        %span= itunes.current_track.album
-      %li.duration.clearfix
-        %label Duration:
-        %span== #{itunes.time_left_in_current_track}/#{itunes.current_track.time}
+      %h3= itunes.current_track.title
+      %h4 
+        = itunes.current_track.artist
+        &mdash;
+        = itunes.current_track.album
+      %h5== #{itunes.time_left_in_current_track} / #{itunes.current_track.time}  
     - else
-      %li.clearfix.nothing Nothin'!
+      %h3 Nothin' ! 

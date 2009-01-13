@@ -1,14 +1,19 @@
-%fieldset#playlist
-  %h1
-    Playlist
-    = link_to '[clear]', :do => :clear
-  .playlist
-    %ol
+#playlist
+  %table.header
+    %tr
+      %th Song
+      %th.artist Artist
+      %th Remove 
+  .box
+    %table  
       - unless itunes.playlist_empty?
+        - i = true
         - itunes.current_tracks_with_indexes.each do |track, index|
-          %li.clearfix
-            = link_to track.description, :do => :skip, :index => index
-            = #link_to 'this is a super super super long title that goes acra.', '/'
-            = link_to 'remove', :do => :remove, :index => index
+          %tr{ :class => (i ? 'even' : 'odd')}
+            %td= link_to track.title, :do => :skip, :index => index
+            %td.artist= link_to track.artist, :do => :skip, :index => index
+            %td= link_to 'remove', :do => :remove, :index => index
+            - i = !i
       - else
-        %li.empty Playlist is empty.
+        %tr
+          %td{:colspan => '3'} Playlist is empty.

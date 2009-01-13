@@ -1,42 +1,19 @@
-html, body, h1, h2, h3, h4, h5, h6, fieldset, ul, ol, li, input, textarea, select, table, dl, dd, dt, img, blockquote, hr, p, table
+*
   :margin 0
   :padding 0
-  :outline 0
+  :font-size 12px
+  :font-family 'lucida grande'
   :font-weight normal
-  :font-size 100%
-  :vertical-align baseline
-  :background transparent
-fieldset, a img, img
-  :border 0 
-html
-  :font-size 62.5%
-  &.safari
-    :font-size 81.5%
+
 body
-  :color #121212
-  :line-height 1.15
-  :font-size 1.35em
-  :font-family monaco, 'lucida console', monospace
-  :background white url(/images/bg.png) right top no-repeat
-  :background-attachment fixed
+  :background white
+  :color black
+
 a
   :outline 0
+  :color black
   :text-decoration none
-  &:link, &:visited
-    :color red
-  &:hover, &:active
-    :color #666
-h1, h2, h3
-  :line-height 1.35 
-  :margin-bottom 18px   
-  :letter-spacing -0.002em
-  :word-spacing 0.15em
-ol, ul, fieldset
-  :margin-bottom 13px 
-li
-  :line-height 1.5    
-fieldset li
-  :list-style-type none
+  
 .clear, .clearfix:after 
   :clear both
   :display block
@@ -46,212 +23,181 @@ fieldset li
   :visibility hidden
 .clearfix:after 
   :content " "
+  
+#header
+  :background url(/images/bgs/header.png) 0 0 repeat-x
+  :height 32px
+  :margin-bottom 10px
+  :position relative  
+  h1
+    :font-weight bold
+    :height 22px
+    :padding-top 1.5px
+    :margin-left 20px
+    :text-indent 32px
+    :font-size 13.5px
+    :background url(/images/icons/apple.png) 0 0 no-repeat
+    span
+      :position absolute
+      :font-size 12px
+      :top 4px
+      :right 20px
+#footer
+  :background url(/images/bgs/footer.png) 0 0 no-repeat
+  :width 870px
+  :height 80px
 
 #container
-  :margin-left 40px
-  :margin-bottom 20px
-  :width 640px
-  :background white
-  :border solid #666
-  :border-width 0 1px 2px
-  
-h1.logo  
-  :font-size 2.05em
-  :background #666
-  :color white
-  :padding 10px 20px 20px
-  small
-    :display block
-    :font-size 0.5em
-    :text-indent 23px
-    :background url(/images/icons/logo.png) 0 4px no-repeat
-  
-fieldset
-  :padding 0 20px
-  h1
-    :margin-bottom 0
-    :color #333
-    :font-size 1.1em
-    :background #efefef
-    :border-bottom 2px solid #ccc
-    :padding 5px 10px
-    :background-repeat no-repeat
-    :background-position 10px 7px
-    :text-indent 24px
-    :-moz-border-radius-topleft 5px
-    :-moz-border-radius-topright 5px
-    :-webkit-border-top-left-radius 5px
-    :-webkit-border-top-right-radius 5px
-  li 
-    :border-bottom 1px dotted #ccc
-    &:first-child
-      label,span
-        :padding-top 7px !important
-    label, span
-      :display block
-      :float left
-      :padding-top 3px
-      :padding-bottom 3px
-    label
-      :background #f7f7f7
-      :width 85px
-      :margin-right 10px
-      :text-align right
-      :padding-right 10px
-    span
-      :width 490px
-    ul
-      :margin-bottom 0
-      :padding-left 7px
-      :background #efefef
-      li
-        :border 0
-        :float left    
-        :margin-right 7px
-        &:last-child
-          :margin-right 0 
-        a
-          :display block
-          :padding 0 7px
-          :margin 3px 0
-          :border 1px solid #ccc
-          :background #f7f7f7
-          :-moz-border-radius 3px
-          :-webkit-border-radius 3px
-    ol 
-      :margin-left 35px
-      li
-        :list-style-type decimal-leading-zero    
-        :padding 5px 0
-        &:first-child
-          :padding-top 7px
-  &#current 
-    h1
-      :background-image url(/images/icons/current.png)
-    li
-      :background white url(/images/label_bg.gif) left top repeat-y
-      span
-        :font-size 115%
-      &.nothing
-        :background-image none
-        :font-style italic
-        :padding 7px 5px 3px
-  &#playlist
-    h1
-      :background-image url(/images/icons/playlist.png)
-      a
-        :display inline-block
-        :margin-left 10px
-        :position relative
-        :top -1px
-        :font-size 0.8em
-        :background url(/images/icons/clear.png) 0 1px no-repeat
-        :text-indent 18px
-    ol
-      :margin-left 35px
-    li
-      :list-style-type decimal-leading-zero
-      :padding 3px 0
-      :position relative
-      &.empty
-        :list-style-type none
-        :margin-left -35px
-        :padding-left 5px
-      &:first-child
-        :padding-top 7px      
-      a
-        :display block
-        :width 525px
-        :margin-right 10px
-        :float left
-      a:last-child
-        :width 16px
-        :height 16px
-        :margin-top 2px
-        :background url(/images/icons/remove.png) 0 0 no-repeat
-        :text-indent -999em
-    .safari & 
-      ol
-        :width 600px
-        :margin 0
-      li a
-        :width 560px
-        &:last-child
-          :width 16px
-        
-  &#library h1
-    :background-image url(/images/icons/library.png)
-  &#controls 
-    h1        
-      :background-image url(/images/icons/controls.png)
-    .volume span a:first-child, .volume span a:last-child, span.play a, span.pause a, span.muted a, span.unmuted a
-      :display inline-block
-      :width 16px
-      :height 16px
-      :text-indent -999em
-      :background-position 0 0 
-      :background-repeat no-repeat
-    .volume span a
-      &:first-child  
-        :background-image url(/images/icons/volume_down.png)
-      &:last-child  
-        :background-image url(/images/icons/volume_up.png)
-    span
-      &.muted a,  &.unmuted a, &.play a, &.pause a
-        :background-position 0 2px
-      &.muted a
-        :background-image url(/images/icons/mute_on.png)   
-      &.unmuted a
-        :background-image url(/images/icons/mute_off.png) 
-      &.play a, &.pause a
-        :padding-bottom 2px
-      &.play a
-        :background-image url(/images/icons/play.png)
-      &.pause a      
-        :background-image url(/images/icons/pause.png)  
-        
-.artist_list, .album_list
-  li:last-child
-    :border 0
-    li:last-child
-      :border-bottom 1px dotted #ccc        
+  :width 870px
+  :margin 10px auto 0
+  :background url(/images/bgs/body.png) 0 0 repeat-y
+  .inner
+    :margin 0 36px
+#control_box
+  :height 96px
+  :overflow hidden
+  :background url(/images/bgs/control_box.png) 0 0 no-repeat
+  .inner
+    :margin 0 60px
+    :padding-top 23px
+    :height 65px
+    :text-align center
+    :position relative
     
-.album_list
-  :padding 0
-  .artist
-    :background #efefef
-    :padding 7px 10px
-    :border-bottom 1px dotted #ccc
-    h2
-      :font-size 1.2em    
-      :width 515px
-      :margin 0
-      :float left
-    a
+#current h2
+  :font-size 13px
+  
+#active_song
+  :margin 3px auto 0
+  :padding 2.4px 0 0
+  :width 340px
+  :height 46px
+  :background url(/images/bgs/active_song.png) 0 0 no-repeat      
+  h3, h4, h5
+    :font-size 10.9px
+    
+#controls
+  :position absolute
+  :bottom 3px
+  :left 0
+  :width 190px
+  div
+    :float left
+    div a
       :display block
-      :float right
-      :padding 4px 5px
-      :margin-left 10px
-      :background #333
-      :font-size 0.8em
-      :-moz-border-radius 3px 
-      :-webkit-border-radius 3px 
-      :background white
-  h3
-    :margin-bottom 0
-    :font-size 1em
-    :padding 7px 10px
-    :border-bottom 1px dotted #ccc      
-    :position relative
-    :font-style italic
-    :background #f2f2f2
-  li  
-    :position relative
-    a
-      :position absolute
-      :right 14px
-      :top 9px
       :text-indent -999em
-      :width 16px
-      :height 16px
-      :background url(/images/icons/add.png) 0 0 no-repeat    
+  .active
+    :margin-right 28px
+    a
+      :width 37px   
+      :height 38px   
+      :background url(/images/buttons/play_pause.png) left top no-repeat
+    .pause a
+      :background-position left bottom  
+  .volume
+    :margin-top 13px
+    h3, div
+      :float left
+    h3
+      :margin 0 15px 
+      :border-bottom 1px dotted 
+      :padding-bottom 1px
+      :text-align center
+      :width 22px 
+      :position relative
+      :top -2px
+    a
+      :background red      
+      :height 11px
+      :text-indent 17px
+      :background url(/images/buttons/volume.png) left top no-repeat
+      :font-size 10px
+    .down a
+      :text-indent 15px
+      :background-position left bottom  
+  .muting, .playlist_clear
+    :position absolute
+    :right -565px
+    :bottom -4px
+    :width 55px 
+    div
+      :float none
+    a
+      :background url(/images/buttons/mute.png) left top no-repeat
+      :width 26px
+      :height 22px
+      :margin 0 auto
+    div.muted a
+      :background-position left bottom  
+    h4
+      :font-size 11px     
+      :margin-top 4px
+  .playlist_clear
+    :right -490px
+    :width 80px
+    a
+      :background url(/images/buttons/clear.png) left top no-repeat  
+      
+#playlist
+  .box
+    :max-height 200px
+    :width 797px
+    :overflow-y scroll
+    :overflow-x hidden
+  table
+    :border-collapse collapse
+    :width 783px
+    tr:hover td
+      :background #fff88a !important
+    tr.odd
+      th, td
+        :background #f1f5fa
+    th, td
+      :padding 4px 5px
+    td  
+      &:last-child
+        :width 50px
+    th
+      :font-size 10px
+      :font-weight bold
+      :height 15px
+      :padding 1px 5px 0
+      :border-bottom 1px solid #555
+      :border-top 1px solid #7f7f7f
+      :background url(/images/bgs/table_heading.png) left top repeat
+      &:first-child
+        :text-align left     
+        :background-position right top
+      &.artist
+        :text-align left  
+    td  
+      &.artist, &:last-child
+        :border-left 1px solid #d9d9d9
+      &.artist  
+        :width 320px
+      &:last-child
+        a
+          :text-indent -999em
+          :width 16px
+          :height 16px
+          :background url(/images/icons/remove.png) 0 0 no-repeat
+          :position relative
+          :left 22px
+          :opacity 0.5
+          &:hover
+            :opacity 1.0
+      a
+        :font-size 11px 
+        :display block 
+    &.header
+      :width 797px 
+      th
+        &:last-child
+          :width 65px         
+        &.artist
+          :width 321px  
+          
+#library
+  :width 797px
+  :background white url(/images/bgs/library.png) left bottom repeat-x        
+  :padding-bottom 8px
