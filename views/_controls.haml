@@ -11,13 +11,13 @@
     %li.mute.clearfix
       %label Mute:
       - if itunes.muted?
-        %span= link_to 'ON', :do => :unmute
+        %span.muted= link_to 'ON', :do => :unmute
       - else
-        %span= link_to 'OFF', :do => :mute    
+        %span.unmuted= link_to 'OFF', :do => :mute    
 
     %li.play.clearfix
-      %label &nbsp;
+      %label State:
       - if itunes.player_state == :playing
-        %span= link_to 'pause', :do => :pause
+        %span.pause= link_to 'pause', :do => :pause
       - else
-        %span= link_to 'play', :do => :play
+        %span.play= link_to 'play', :do => :play
