@@ -18,8 +18,11 @@
                   = link_to '+ add', :do => :add, :index => track.library_index
 
   - else
-    - itunes.artists.each do |artist|
-      = link_to artist, :artist => artist
+    #artist_list
+      %h3 Artists
+      %ol
+        - itunes.artists.each do |artist|
+          %li= link_to artist, :artist => artist
     / %ul.artist_list
     /      %li
     /        %ul.clearfix

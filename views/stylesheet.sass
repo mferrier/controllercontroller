@@ -178,14 +178,13 @@ a
       &:last-child
         a
           :text-indent -999em
-          :width 16px
-          :height 16px
-          :background url(/images/icons/remove.png) 0 0 no-repeat
+          :width 12px
+          :height 12px
+          :background url(/images/buttons/remove.png) 0 0 no-repeat
           :position relative
-          :left 22px
-          :opacity 0.5
+          :left 23.5px
           &:hover
-            :opacity 1.0
+            :opacity 0.8
       a
         :font-size 11px 
         :display block 
@@ -201,3 +200,14 @@ a
   :width 797px
   :background white url(/images/bgs/library.png) left bottom repeat-x        
   :padding-bottom 8px
+
+#artist_list
+  /:background red  
+  :overflow-y scroll
+  :overflow-x hidden
+  :max-height 200px
+  li:hover
+    :background #3d80df
+    a
+      :color white
+  
