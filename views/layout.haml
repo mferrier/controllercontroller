@@ -4,18 +4,6 @@
     %meta{'http-equiv' => 'content-Type', :content => 'text/html; charset=utf-8'}/
     %link{:href => "/stylesheet.css", :media => "all", :rel => "stylesheet", :type => "text/css"}/
     %title iTunes Library Controller - [controllercontroller]
-    %script{:type => 'text/javascript'}
-      var css_browser_selector = function() {
-      var 
-      ua=navigator.userAgent.toLowerCase(),
-      is=function(t){ return ua.indexOf(t) != -1; },
-      h=document.getElementsByTagName('html')[0],
-      b=(!(/opera|webtv/i.test(ua))&&/msie (\d)/.test(ua))?('ie ie'+RegExp.$1):is('gecko/')? 'gecko':is('opera/9')?'opera opera9':/opera (\d)/.test(ua)?'opera opera'+RegExp.$1:is('konqueror')?'konqueror':is('applewebkit/')?'webkit safari':is('mozilla/')?'gecko':'',
-      os=(is('x11')||is('linux'))?' linux':is('mac')?' mac':is('win')?' win':'';
-      var c=b+os+' js';
-      h.className += h.className?' '+c:c;
-      }();
-      // Mike, can you move this into it's own .js file? I was unsure how to set that up in Sinatra. Thanks!
   %body
     #header.clearfix
       %h1 
