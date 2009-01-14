@@ -4,6 +4,11 @@ controllercontroller
 Sinatra server for unlimited users to control iTunes remotely. Add/remove tracks from
 the playlist, browse the library, control play/pause/volume/etc.
 
+Design
+=======================
+Best used in Firefox 3 or Safari. Opera is okay, but not as nice. It is passable in 
+Internet Explorer, but not great. I have no plans to support IE, so you can just DEAL! haha!
+
 
 Dependencies
 =======================
@@ -17,12 +22,6 @@ Running
 
 $ ruby server.rb
 
+
 (C) 2008 Mike Ferrier (mferrier@gmail.com)
 
-
-
-CSS + Styles
-=======================
-by Shawn Allison
-Best used in Firefox 3 or Safari. Opera is okay, but not as nice. It is passable in 
-Internet Explorer, but not great. I have no plans to support IE, so you can just DEAL! haha!
