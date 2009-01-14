@@ -24,5 +24,5 @@ $ ruby server.rb
 CSS + Styles
 =======================
 by Shawn Allison
-I am not supporting or testing this for Internet Explorer, so you can all just DEAL! haha!
-Best used in Firefox 3 or Safari.
+Best used in Firefox 3 or Safari. Opera is okay, but not as nice. It is passable in 
+Internet Explorer, but not great. I have no plans to support IE, so you can just DEAL! haha!
