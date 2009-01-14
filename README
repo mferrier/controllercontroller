@@ -21,7 +21,8 @@ $ ruby server.rb
 
 
 
-styles
+CSS + Styles
 =======================
-Style assistance by Shawn Allison.
-Obviously no support for Internet Explorer. Looks great in Firefox 3 and Safari!
+by Shawn Allison
+I am not supporting or testing this for Internet Explorer, so you can all just DEAL! haha!
+Best used in Firefox 3 or Safari.
