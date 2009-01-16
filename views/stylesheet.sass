@@ -95,34 +95,13 @@ a
       :display block
       :text-indent -999em
   .active
-    :margin-right 28px
+    :margin-right 26px
     a
       :width 37px   
       :height 38px   
       :background url(/images/buttons/play_pause.png) left top no-repeat
     .pause a
-      :background-position left bottom  
-  .volume
-    :margin-top 13px
-    h3, div
-      :float left
-    h3
-      :margin 0 15px 
-      :border-bottom 1px dotted 
-      :padding-bottom 1px
-      :text-align center
-      :width 22px 
-      :position relative
-      :top -2px
-    a
-      :background red      
-      :height 11px
-      :text-indent 17px
-      :background url(/images/buttons/volume.png) left top no-repeat
-      :font-size 10px
-    .down a
-      :text-indent 15px
-      :background-position left bottom  
+      :background-position left bottom   
   .muting, .playlist_clear
     :position absolute
     :right -565px
@@ -144,7 +123,28 @@ a
     :right -490px
     :width 80px
     a
-      :background url(/images/buttons/clear.png) left top no-repeat  
+      :background url(/images/buttons/clear.png) left top no-repeat
+  .volume
+    :width 107px
+    :overflow hidden
+    :background url(/images/bgs/volume.png) 0 0 no-repeat
+    :height 12px
+    :margin-top 15px
+  .ui-slider  
+    :width 67px 
+    :height 12px 
+    :position relative 
+    :left 12px
+  .ui-slider-handle  
+    :position absolute 
+    :z-index 1 
+    :height 12px 
+    :width 12px 
+    :top 0 
+    :left 0
+    :background url(/images/buttons/volume.png) 0 0 no-repeat   
+  .ui-slider, .ui-slider-1, .ui-slider-handle   
+    :cursor pointer        
       
 #playlist
   .box
@@ -260,4 +260,3 @@ a
   li
     &:last-child
       :padding-bottom 3px
-         
