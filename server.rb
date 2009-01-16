@@ -4,33 +4,13 @@ require 'sinatra'
 require 'itunes'
 require 'uri'
 require 'ruby-debug'
+require 'helpers'
+
+include Helpers
 
 configure do
   ITUNES = ITunes.new
   use_in_file_templates!
-end
-
-helpers do
-  def itunes
-    ITUNES
-  end
-  
-  def link_to(label, url = '/')
-    if url.is_a?(Hash)
-      url = '?' + url.to_param
-    end
-    
-    "<a href=\"#{URI.escape(url)}\">#{label}</a>"
-  end
-  
-  def partial(page, options={})
-    haml "_#{page.to_s}".to_sym, options.merge!(:layout => false)
-  end
-  
-  def link_to_anchor(label, name)
-    url = "##{name}"
-    link_to label, url
-  end
 end
 
 get '/stylesheet.css' do
@@ -42,7 +22,7 @@ get '/*' do
   if itunes.player_state == :stopped && !itunes.playlist_empty?
     itunes.playpause
   end
-  
+
   case params[:do]
   when 'play'
     itunes.play
@@ -67,7 +47,7 @@ get '/*' do
   when 'clear'
     itunes.clear_playlist
   end
-  
+
   if params[:do]
     redirect request.referrer || '/'
   else

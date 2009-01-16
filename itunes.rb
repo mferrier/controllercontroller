@@ -18,7 +18,7 @@ class ITunes
   end
   
   def app
-    @app ||= itunes_connection
+    itunes_connection
   end
   
   def server_playlist
@@ -159,6 +159,10 @@ class ITunes
   end
   
   def itunes_connection
-    Appscript.app('iTunes')
+    begin
+      @connect ||= Appscript.app('iTunes')
+    rescue
+      @connect = nil and retry
+    end
   end  
 end

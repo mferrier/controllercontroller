@@ -10,7 +10,7 @@ module Library
   end
   
   def artists
-    app.tracks.artist.get.uniq!.reject{|a| a.blank?}.sort
+    app.tracks.artist.get.uniq!.reject{|a| a.blank?}.sort_by(&:upcase)
   end
   
   def artist_letters
