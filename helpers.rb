@@ -30,7 +30,7 @@ module Helpers
 
       def javascript_include_tag(*names)
         (names.flatten.map do |name|
-          "<script src='/javascripts/#{name.to_s}.js' type='text/javascript'></script>"
+          "<script src='/javascripts/#{name.to_s}.js?#{Time.now.to_i}' type='text/javascript'></script>"
         end) * "\n"
       end
       

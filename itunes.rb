@@ -103,6 +103,10 @@ class ITunes
     app.sound_volume.set(new_volume)
   end
   
+  def set_volume(level)
+    app.sound_volume.set(level.at_least(MIN_VOLUME).at_most(MAX_VOLUME))
+  end
+  
   def mute
     @volume_before_mute = current_volume
     app.sound_volume.set(0)

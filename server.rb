@@ -32,6 +32,8 @@ get '/*' do
     itunes.increase_volume(5)
   when 'volume_down'
     itunes.decrease_volume(5)
+  when 'set_volume'
+    itunes.set_volume(params[:volume].to_i)
   when 'mute'
     itunes.mute
   when 'unmute'
