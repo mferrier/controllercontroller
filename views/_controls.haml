@@ -6,12 +6,11 @@
       .play= link_to 'play', :do => :play
 
   .volume.clearfix
-    #volume_slider.ui-slider-1
-      #volume_handle.ui-slider-handle
-    / .down= link_to '(&ndash;)', :do => :volume_down
-    / %h3= itunes.current_volume
-    / .up= link_to '(+)', :do => :volume_up
- 
+    #volume_slider.ui-slider
+      .ui-slider-range
+        %a#volume_handle.ui-slider-handle
+      %input#volume_value{:type => 'hidden', :value => itunes.current_volume}
+
   .muting  
     - if itunes.muted?
       .muted= link_to 'ON', :do => :unmute

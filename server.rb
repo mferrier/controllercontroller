@@ -50,9 +50,12 @@ get '/*' do
     itunes.clear_playlist
   end
 
-  if params[:do]
+  if request.xhr?
+    # render nothing
+    nil
+  elsif params[:do]
     redirect request.referrer || '/'
   else
-    haml :dashboard
+    haml(:dashboard) 
   end
 end

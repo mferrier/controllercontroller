@@ -1,6 +1,8 @@
 $(document).ready(function(){
-  $('#volume_slider').slider();
-  $('#volume_slider').mouse_up(function(e){
-    
+  $('#volume_slider').slider({
+    value: $('#volume_value').val(),
+    stop: function(e, ui){
+      jQuery.get('/?do=set_volume&volume=' + ui.value);
+    }
   });
 });
