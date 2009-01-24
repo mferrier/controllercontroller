@@ -11,17 +11,13 @@
         %a#volume_handle.ui-slider-handle
       %input#volume_value{:type => 'hidden', :value => itunes.current_volume}
 
-  .muting  
+  .muting
     - if itunes.muted?
       .muted= link_to 'ON', :do => :unmute
       %h4 Mute ON
     - else
-      .unmuted= link_to 'OFF', :do => :mute    
+      .unmuted= link_to 'OFF', :do => :mute
       %h4 Mute OFF
   .playlist_clear
-    .cleared= link_to '[clear]', :do => :clear    
+    .cleared= link_to '[clear]', :do => :clear
     %h4 Clear Playlist
-
- 
-
-      

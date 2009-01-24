@@ -11,12 +11,24 @@ module Helpers
         ITUNES
       end
 
-      def link_to(label, url = '/')
-        if url.is_a?(Hash)
-          url = '?' + url.to_param
+      def link_to(label, options = {})
+        url = options.delete(:url) || '/'
+        
+        html_options = begin
+          if options.has_key?(:html)
+            (options[:html].map do |k,v|
+              "#{k}=\"#{CGI.escapeHTML(v)}\""
+            end).join(' ')
+          else
+            ''
+          end
+        end
+        
+        if options.any?
+          url << '?' + options.to_param
         end
 
-        "<a href=\"#{URI.escape(url)}\">#{label}</a>"
+        "<a href=\"#{URI.escape(url)}\" #{html_options}>#{label}</a>"
       end
 
       def partial(page, options={})
@@ -33,7 +45,7 @@ module Helpers
           "<script src='/javascripts/#{name.to_s}.js?#{Time.now.to_i}' type='text/javascript'></script>"
         end) * "\n"
       end
-      
+
       def stylesheet_link_tag(*names)
         (names.flatten.map do |name|
           "<link href='/#{name.to_s}.css' media='all' rel='stylesheet' type='text/css' />"
