@@ -22,6 +22,8 @@ Running
 
 $ ruby server.rb
 
+Then connect to http://your_ip:4567.
+
 
 (C) 2008 Mike Ferrier (mferrier@gmail.com)
 
