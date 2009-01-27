@@ -34,7 +34,7 @@ module Library
   end
   
   def search(what, where = nil)
-    opts = {:for => URI.unescape(what)}
+    opts = {:for => what}
     opts[:only] = where if where
     library_playlist.search(opts).map{|t| Track.new(t)}
   end

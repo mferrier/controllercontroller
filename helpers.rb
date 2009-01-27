@@ -16,7 +16,7 @@ module Helpers
         
         html_options = begin
           if options.has_key?(:html)
-            (options[:html].map do |k,v|
+            (options.delete(:html).map do |k,v|
               "#{k}=\"#{CGI.escapeHTML(v)}\""
             end).join(' ')
           else
@@ -50,6 +50,10 @@ module Helpers
         (names.flatten.map do |name|
           "<link href='/#{name.to_s}.css' media='all' rel='stylesheet' type='text/css' />"
         end) * "\n"
+      end
+      
+      def current_artist
+        URI.unescape(params[:artist] || '')
       end
     end
   end

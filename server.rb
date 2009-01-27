@@ -3,7 +3,7 @@ require 'activesupport'
 require 'sinatra'
 require 'itunes'
 require 'uri'
-#require 'ruby-debug'
+require 'ruby-debug'
 require 'helpers'
 
 include Helpers
@@ -49,10 +49,18 @@ get '/*' do
   when 'clear'
     itunes.clear_playlist
   end
+  
+  if params[:artist]
+    @albums = itunes.find_albums_by_artist(URI.unescape(params[:artist]))
+  end
 
   if request.xhr?
-    # render nothing
-    nil
+    if params[:artist]
+      partial :album, :locals => {:albums => (@albums || [])}
+    else
+      # render nothing
+      nil
+    end
   elsif params[:do]
     redirect request.referrer || '/'
   else

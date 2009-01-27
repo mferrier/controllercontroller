@@ -5,11 +5,7 @@
   #artists
     %ol
       - itunes.artists.each do |artist|
-        %li= link_to artist, :artist => artist  
+        %li{:class => (current_artist == artist ? 'selected' : '')}
+          = link_to artist, :artist => artist, :html => {:class => "artist#{current_artist == artist ? ' selected' : ''}"}
   #albums
-    - if params[:artist]
-      - itunes.find_albums_by_artist(params[:artist]).each do |album, tracks|
-        %h4= link_to album, :do => :add_album, :album => album
-        %ol
-          - tracks.each do |track|
-            %li= link_to track.title, :do => :add, :index => track.library_index
+    = partial :album, :locals => {:albums => (@albums || [])}
