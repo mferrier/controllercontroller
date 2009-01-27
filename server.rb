@@ -3,7 +3,6 @@ require 'activesupport'
 require 'sinatra'
 require 'itunes'
 require 'uri'
-require 'ruby-debug'
 require 'helpers'
 
 include Helpers
