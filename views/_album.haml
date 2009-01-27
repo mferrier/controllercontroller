@@ -1,0 +1,5 @@
+- albums.each do |album, tracks|
+  %h4= link_to album, :do => :add_album, :album => album
+  %ol
+    - tracks.each do |track|
+      %li= link_to track.title, :do => :add, :index => track.library_index
