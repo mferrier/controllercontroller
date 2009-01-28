@@ -8,6 +8,8 @@ require 'library'
 class ITunes
   include Library
   
+  attr_accessor :connect
+  
   SERVER_PLAYLIST_NAME = 'controllercontroller'
   MIN_VOLUME = 0
   MAX_VOLUME = 100
@@ -166,7 +168,11 @@ class ITunes
     begin
       @connect ||= Appscript.app('iTunes')
     rescue
-      @connect = nil and retry
+      reconnect and retry
     end
-  end  
+  end
+  
+  def reconnect
+    @connect = Appscript.app('iTunes')
+  end
 end

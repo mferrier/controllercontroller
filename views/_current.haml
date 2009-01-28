@@ -2,11 +2,11 @@
   %h2 Now Playing
   #active_song
     - if !itunes.playlist_empty?
-      %h3= itunes.current_track.title
+      %h3= itunes.current_track.title.snip(50)
       %h4 
-        = itunes.current_track.artist
+        = itunes.current_track.artist.snip(50)
         &mdash;
-        = itunes.current_track.album
+        = itunes.current_track.album.snip(50)
       %h5== #{itunes.time_left_in_current_track} / #{itunes.current_track.time}  
     - else
       %h3.empty Nothin' ! 

@@ -2,4 +2,4 @@
   %h4= link_to album, :do => :add_album, :album => album
   %ol
     - tracks.each do |track|
-      %li= link_to track.title, :do => :add, :index => track.library_index
+      %li= link_to track.title.snip(60), :do => :add, :index => track.library_index
