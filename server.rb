@@ -1,6 +1,6 @@
 require 'rubygems'
-require 'activesupport'
 require 'sinatra'
+require 'activesupport'
 require 'itunes'
 require 'uri'
 require 'helpers'
